@@ -4,7 +4,7 @@
 
 **Browser plugins for [universal logger](https://github.com/cheton/universal-logger/)**
 
-![image](https://cloud.githubusercontent.com/assets/447801/25890227/5aa8a12a-359f-11e7-94d6-7818a16acde9.png)
+![image](https://cloud.githubusercontent.com/assets/447801/25896230/e2a7f36c-35b5-11e7-8f93-5c05caff6030.png)
  
 ## Installation
 
