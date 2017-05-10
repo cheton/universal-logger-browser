@@ -3,6 +3,8 @@
 [![NPM](https://nodei.co/npm/universal-logger-browser.png?downloads=true&stars=true)](https://www.npmjs.com/package/universal-logger-browser)
 
 **Browser plugins for [universal logger](https://github.com/cheton/universal-logger/)**
+
+![image](https://cloud.githubusercontent.com/assets/447801/25890227/5aa8a12a-359f-11e7-94d6-7818a16acde9.png)
  
 ## Installation
 
@@ -11,8 +13,6 @@ npm install --save universal-logger universal-logger-browser
 ```
 
 ## Usage
-![image](https://cloud.githubusercontent.com/assets/447801/25889284/d6dcf7fe-359b-11e7-973b-e0b6b19d0c38.png)
-
 ```js
 import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
@@ -22,6 +22,7 @@ const log = logger();
 
 log.chainedHandlers = [
     styleable({
+        showSource: true,
         showTimestamp: true,
         style: {
             level: {
@@ -38,10 +39,9 @@ log.chainedHandlers = [
 ];
 
 // In addition to replacing the chainedHandlers array, you can register a listener for the 'log' event.
-log.on('log', styleable({
-    showTimestamp: false
-}));
+log.on('log', styleable());
 
+log.enableStackTrace();
 log.setLevel(TRACE);
 
 log.log(INFO, 'The logger has initialized');
@@ -59,7 +59,7 @@ log.error(emoji.get('lightning_cloud'));
 Name | Type | Default | Description 
 :--- | :--- | :------ | :----------
 colorized | boolean | true | Show colorized output.
-showSource | boolean | true | Show the source line number of the caller.
+showSource | boolean | true | Show the source line number of the caller.<br>Note that you need to call `log.enableStackTrace()` to get stack frames.
 showTimestamp | boolean | false | Show timestamp.
 formatTimestamp | function(timestamp) | | Convert timestamp to string.
 style | object | See [default-style.js](https://github.com/cheton/universal-logger-browser/blob/master/src/default-style.js) | Custom styles.
