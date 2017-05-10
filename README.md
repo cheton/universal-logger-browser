@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install --save universal-logger-browser
+npm install --save universal-logger universal-logger-browser
 ```
 
 ## Usage
@@ -58,7 +58,7 @@ log.error(emoji.get('lightning_cloud'));
 
 Name | Type | Default | Description 
 :--- | :--- | :------ | :----------
-colorized | boolean | true | Colorized output.
+colorized | boolean | true | Show colorized output.
 showSource | boolean | true | Show the source line number of the caller.
 showTimestamp | boolean | false | Show timestamp.
 formatTimestamp | function(timestamp) | | Convert timestamp to string.
