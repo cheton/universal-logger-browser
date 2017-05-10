@@ -11,6 +11,8 @@ npm install --save universal-logger-browser
 ```
 
 ## Usage
+![image](https://cloud.githubusercontent.com/assets/447801/25889284/d6dcf7fe-359b-11e7-973b-e0b6b19d0c38.png)
+
 ```js
 import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
@@ -49,6 +51,18 @@ log.info(emoji.get('barely_sunny'));
 log.warn(emoji.get('rain_cloud'));
 log.error(emoji.get('lightning_cloud'));
 ```
+
+## API
+
+### Styleable
+
+Name | Type | Default | Description 
+:--- | :--- | :------ | :----------
+colorized | boolean | true | Colorized output.
+showSource | boolean | true | Show the source line number of the caller.
+showTimestamp | boolean | false | Show timestamp.
+formatTimestamp | function(timestamp) | | Convert timestamp to string.
+style | object | See [default-style.js](https://github.com/cheton/universal-logger-browser/blob/master/src/default-style.js) | Custom styles.
 
 ## License
 
