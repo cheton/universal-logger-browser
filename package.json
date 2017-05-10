@@ -1,0 +1,71 @@
+{
+  "name": "universal-logger-browser",
+  "version": "0.1.0",
+  "description": "Browser plugins for universal logger.",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "npm run lint && npm test && npm run clean && npm run build && npm run build-examples",
+    "build": "babel --out-dir ./lib ./src",
+    "build-examples": "cd examples; webpack",
+    "clean": "rm -rf lib/*",
+    "demo": "http-server -p 8000 docs/",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src",
+    "test": "./babel-tap --coverage test/*.js",
+    "coveralls": "./babel-tap --coverage --coverage-report=text-lcov test/*.js | node_modules/.bin/coveralls",
+    "dev": "cd examples; webpack-dev-server --hot --inline --host 0.0.0.0 --port 8000 --content-base ../docs"
+  },
+  "author": "Cheton Wu <cheton@gmail.com>",
+  "contributors": [
+    {
+      "name": "Cheton Wu",
+      "email": "cheton@gmail.com",
+      "url": "https://github.com/cheton"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheton/universal-logger-browser.git"
+  },
+  "keywords": [
+    "universal",
+    "log",
+    "logger",
+    "logging",
+    "browser"
+  ],
+  "peerDependencies": {
+    "universal-logger": ">= 0.2.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "babel-cli": "~6.24.1",
+    "babel-core": "~6.24.1",
+    "babel-eslint": "~7.2.3",
+    "babel-loader": "~7.0.0",
+    "babel-plugin-transform-es3-member-expression-literals": "~6.22.0",
+    "babel-plugin-transform-es3-property-literals": "~6.22.0",
+    "babel-preset-es2015": "~6.24.1",
+    "babel-preset-stage-0": "~6.24.1",
+    "coveralls": "~2.13.1",
+    "eslint": "~3.19.0",
+    "eslint-config-trendmicro": "~0.5.1",
+    "eslint-loader": "~1.7.1",
+    "eslint-plugin-import": "~2.2.0",
+    "eslint-plugin-jsx-a11y": "~2.2.3",
+    "eslint-plugin-react": "~6.10.0",
+    "html-webpack-plugin": "~2.28.0",
+    "node-emoji": "~1.5.1",
+    "tap": "~10.3.2",
+    "universal-logger": "~0.2.0",
+    "webpack": "~2.5.1",
+    "webpack-dev-server": "~2.4.5"
+  },
+  "nyc": {
+    "exclude": [
+      "test/index.js"
+    ]
+  }
+}

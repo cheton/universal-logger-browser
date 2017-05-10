@@ -1,0 +1,15 @@
+{
+  "name": "universal-logger-browser",
+  "description": "Browser plugins for universal logger.",
+  "authors": "Cheton Wu <cheton_wu@trend.com.tw>",
+  "homepage": "https://github.com/cheton/universal-logger-browser",
+  "snapshots": [],
+  "keywords": [
+    "universal",
+    "log",
+    "logger",
+    "logging",
+    "browser"
+  ],
+  "license": "MIT"
+}
