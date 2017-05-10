@@ -6328,16 +6328,16 @@ exports['default'] = {
         trace: (0, _objectToCss2['default'])({
             lineHeight: 2,
             padding: '2px 5px',
-            border: '1px solid #222',
-            color: '#222',
-            background: '#FFF'
+            border: '1px solid #4F8A10',
+            color: '#4F8A10',
+            background: '#DFF2BF'
         }),
         debug: (0, _objectToCss2['default'])({
             lineHeight: 2,
             padding: '2px 5px',
-            border: '1px solid #4F8A10',
-            color: '#4F8A10',
-            background: '#DFF2BF'
+            border: '1px solid #222',
+            color: '#222',
+            background: '#FFF'
         }),
         info: (0, _objectToCss2['default'])({
             lineHeight: 2,
@@ -6522,7 +6522,7 @@ var styleable = function styleable(options) {
 
         if (level && level.name) {
             if (colorized) {
-                var _str = level.name.charAt(0).toUpperCase();
+                var _str = level.name.toUpperCase();
                 formatters.push('%c' + _str + '%c');
                 var styledLevel = style.level[level.name] || '';
 
@@ -6612,4 +6612,4 @@ log.error(_nodeEmoji2['default'].get('lightning_cloud'));
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?b92f02d79043ae6e30eb
+//# sourceMappingURL=bundle.js.map?f412b11909f5b10a2d8d
