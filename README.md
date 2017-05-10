@@ -41,8 +41,8 @@ log.chainedHandlers = [
 // In addition to replacing the chainedHandlers array, you can register a listener for the 'log' event.
 log.on('log', styleable());
 
-log.enableStackTrace();
 log.setLevel(TRACE);
+log.enableStackTrace();
 
 log.log(INFO, 'The logger has initialized');
 log.trace(emoji.get('mostly_sunny'));
