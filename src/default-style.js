@@ -15,16 +15,16 @@ export default {
         trace: css({
             lineHeight: 2,
             padding: '2px 5px',
-            border: '1px solid #222',
-            color: '#222',
-            background: '#FFF'
+            border: '1px solid #4F8A10',
+            color: '#4F8A10',
+            background: '#DFF2BF'
         }),
         debug: css({
             lineHeight: 2,
             padding: '2px 5px',
-            border: '1px solid #4F8A10',
-            color: '#4F8A10',
-            background: '#DFF2BF'
+            border: '1px solid #222',
+            color: '#222',
+            background: '#FFF'
         }),
         info: css({
             lineHeight: 2,
