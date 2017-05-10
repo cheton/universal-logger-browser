@@ -50,7 +50,7 @@ const styleable = (options) => {
 
         if (level && level.name) {
             if (colorized) {
-                const str = level.name.charAt(0).toUpperCase();
+                const str = level.name.toUpperCase();
                 formatters.push(`%c${str}%c`);
                 const styledLevel = style.level[level.name] || '';
 
