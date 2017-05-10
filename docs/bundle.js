@@ -6299,6 +6299,72 @@ module.exports.defineLogLevel = function (name, value) {
 
 /***/ }),
 
+/***/ "../src/default-style.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+
+var _objectToCss = __webpack_require__("../src/object-to-css.js");
+
+var _objectToCss2 = _interopRequireDefault(_objectToCss);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+exports['default'] = {
+    timestamp: (0, _objectToCss2['default'])({
+        lineHeight: 2,
+        padding: '2px 0',
+        color: '#3B5998',
+        background: '#EDEFF4'
+    }),
+    namespace: (0, _objectToCss2['default'])({
+        lineHeight: 2,
+        color: '#036F96'
+    }),
+    level: {
+        trace: (0, _objectToCss2['default'])({
+            lineHeight: 2,
+            padding: '2px 5px',
+            border: '1px solid #222',
+            color: '#222',
+            background: '#FFF'
+        }),
+        debug: (0, _objectToCss2['default'])({
+            lineHeight: 2,
+            padding: '2px 5px',
+            border: '1px solid #4F8A10',
+            color: '#4F8A10',
+            background: '#DFF2BF'
+        }),
+        info: (0, _objectToCss2['default'])({
+            lineHeight: 2,
+            padding: '2px 5px',
+            border: '1px solid #00529B',
+            color: '#00529B',
+            background: '#BDE5F8'
+        }),
+        warn: (0, _objectToCss2['default'])({
+            lineHeight: 2,
+            padding: '2px 5px',
+            border: '1px solid #9F6000',
+            color: '#9F6000',
+            background: '#EFEFB3'
+        }),
+        error: (0, _objectToCss2['default'])({
+            lineHeight: 2,
+            padding: '2px 5px',
+            border: '1px solid #D8000C',
+            color: '#D8000C',
+            background: '#FFBABA'
+        })
+    }
+};
+
+/***/ }),
+
 /***/ "../src/index.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6399,59 +6465,13 @@ var _objectToCss = __webpack_require__("../src/object-to-css.js");
 
 var _objectToCss2 = _interopRequireDefault(_objectToCss);
 
+var _defaultStyle = __webpack_require__("../src/default-style.js");
+
+var _defaultStyle2 = _interopRequireDefault(_defaultStyle);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var noop = function noop() {};
-
-var defaultStyle = {
-    timestamp: (0, _objectToCss2['default'])({
-        lineHeight: 2,
-        padding: '2px 0',
-        color: '#3B5998',
-        background: '#EDEFF4'
-    }),
-    namespace: (0, _objectToCss2['default'])({
-        lineHeight: 2,
-        color: '#036F96'
-    }),
-    level: {
-        trace: (0, _objectToCss2['default'])({
-            lineHeight: 2,
-            padding: '2px 5px',
-            border: '1px solid #222',
-            color: '#222',
-            background: '#FFF'
-        }),
-        debug: (0, _objectToCss2['default'])({
-            lineHeight: 2,
-            padding: '2px 5px',
-            border: '1px solid #4F8A10',
-            color: '#4F8A10',
-            background: '#DFF2BF'
-        }),
-        info: (0, _objectToCss2['default'])({
-            lineHeight: 2,
-            padding: '2px 5px',
-            border: '1px solid #00529B',
-            color: '#00529B',
-            background: '#BDE5F8'
-        }),
-        warn: (0, _objectToCss2['default'])({
-            lineHeight: 2,
-            padding: '2px 5px',
-            border: '1px solid #9F6000',
-            color: '#9F6000',
-            background: '#EFEFB3'
-        }),
-        error: (0, _objectToCss2['default'])({
-            lineHeight: 2,
-            padding: '2px 5px',
-            border: '1px solid #D8000C',
-            color: '#D8000C',
-            background: '#FFBABA'
-        })
-    }
-};
 
 var styleable = function styleable(options) {
     var _options = _extends({}, options),
@@ -6469,8 +6489,8 @@ var styleable = function styleable(options) {
     options = options || {};
     options.style = options.style || {};
     options.style.level = options.style.level || {};
-    var style = _extends({}, defaultStyle, options.style, {
-        level: _extends({}, defaultStyle.level, options.style.level)
+    var style = _extends({}, _defaultStyle2['default'], options.style, {
+        level: _extends({}, _defaultStyle2['default'].level, options.style.level)
     });
 
     return function (context, messages, next) {
@@ -6579,11 +6599,7 @@ log.chainedHandlers = [(0, _src.styleable)({
     }
 })];
 
-// In addition to replacing the chainedHandlers array, you can register a listener for the 'log' event.
-log.on('log', (0, _src.styleable)({
-    showTimestamp: false
-}));
-
+log.enableStackTrace();
 log.setLevel(_universalLogger.TRACE);
 
 log.log(_universalLogger.INFO, 'The logger has initialized');
@@ -6596,4 +6612,4 @@ log.error(_nodeEmoji2['default'].get('lightning_cloud'));
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?5b215b453002e7dbde45
+//# sourceMappingURL=bundle.js.map?b92f02d79043ae6e30eb

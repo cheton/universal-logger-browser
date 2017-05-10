@@ -21,11 +21,7 @@ log.chainedHandlers = [
     })
 ];
 
-// In addition to replacing the chainedHandlers array, you can register a listener for the 'log' event.
-log.on('log', styleable({
-    showTimestamp: false
-}));
-
+log.enableStackTrace();
 log.setLevel(TRACE);
 
 log.log(INFO, 'The logger has initialized');
