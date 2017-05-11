@@ -17,19 +17,18 @@ npm install --save universal-logger universal-logger-browser
 ```
 
 ## Usage
+
 ```js
 import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
 import { minimal, styleable } from 'universal-logger-browser';
 
-const log = logger();
-
-log.chainedHandlers = [
-    minimal({
+const log = logger()
+    .use(minimal({
         showSource: true,
-        useNativeConsoleMethods: true
-    }),
-    styleable({
+        useNativeConsoleMethods: false
+    }))
+    .use(styleable({
         showSource: true,
         showTimestamp: true,
         style: {
@@ -43,14 +42,13 @@ log.chainedHandlers = [
                 }
             }
         }
-    })
-];
+    }))
+    .on('log', (context, messages) => {
+        // Custom log processing
+    });
 
-// In addition to replacing the chainedHandlers array, you can register a listener for the 'log' event.
-log.on('log', minimal());
-
-log.setLevel(TRACE);
 log.enableStackTrace();
+log.setLevel(TRACE);
 
 log.log(INFO, 'The logger has initialized');
 log.trace(emoji.get('mostly_sunny'));

@@ -3115,12 +3115,10 @@ var _src = __webpack_require__("../src/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var log = (0, _universalLogger2['default'])();
-
-log.chainedHandlers = [(0, _src.minimal)({
+var log = (0, _universalLogger2['default'])().use((0, _src.minimal)({
     showSource: true,
-    useNativeConsoleMethods: true
-}), (0, _src.styleable)({
+    useNativeConsoleMethods: false
+})).use((0, _src.styleable)({
     showTimestamp: true,
     style: {
         level: {
@@ -3133,7 +3131,9 @@ log.chainedHandlers = [(0, _src.minimal)({
             }
         }
     }
-})];
+})).on('log', function (context, messages) {
+    // Custom log processing
+});
 
 log.enableStackTrace();
 log.setLevel(_universalLogger.TRACE);
@@ -3148,4 +3148,4 @@ log.error(_nodeEmoji2['default'].get('lightning_cloud'));
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?b836dd1d0354ff01bcaa
+//# sourceMappingURL=bundle.js.map?ec960a6236c1f10120ca

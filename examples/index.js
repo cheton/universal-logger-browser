@@ -2,14 +2,12 @@ import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
 import { minimal, styleable } from '../src';
 
-const log = logger();
-
-log.chainedHandlers = [
-    minimal({
+const log = logger()
+    .use(minimal({
         showSource: true,
-        useNativeConsoleMethods: true
-    }),
-    styleable({
+        useNativeConsoleMethods: false
+    }))
+    .use(styleable({
         showTimestamp: true,
         style: {
             level: {
@@ -22,8 +20,10 @@ log.chainedHandlers = [
                 }
             }
         }
-    })
-];
+    }))
+    .on('log', (context, messages) => {
+        // Custom log processing
+    });
 
 log.enableStackTrace();
 log.setLevel(TRACE);
