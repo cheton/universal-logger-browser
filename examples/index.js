@@ -5,7 +5,7 @@ import { minimal, styleable } from '../src';
 const log = logger()
     .use(minimal({
         showSource: true,
-        useNativeConsoleMethods: false
+        useNativeConsoleMethods: true
     }))
     .use(styleable({
         showTimestamp: true,

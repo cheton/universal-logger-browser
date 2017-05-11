@@ -26,7 +26,7 @@ import { minimal, styleable } from 'universal-logger-browser';
 const log = logger()
     .use(minimal({
         showSource: true,
-        useNativeConsoleMethods: false
+        useNativeConsoleMethods: true
     }))
     .use(styleable({
         showSource: true,
