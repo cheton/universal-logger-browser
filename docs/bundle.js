@@ -2355,10 +2355,6 @@ var _stacktrace = __webpack_require__("../node_modules/universal-logger/lib/stac
 
 var _stacktrace2 = _interopRequireDefault(_stacktrace);
 
-var _default = __webpack_require__("../node_modules/universal-logger/lib/handlers/default.js");
-
-var _default2 = _interopRequireDefault(_default);
-
 var _LogLevel = __webpack_require__("../node_modules/universal-logger/lib/LogLevel.js");
 
 var _LogLevel2 = _interopRequireDefault(_LogLevel);
@@ -2384,7 +2380,7 @@ var Logger = function (_EventEmitter) {
         _this.namespace = '';
         _this.level = _constants.OFF;
         _this.stacktrace = false;
-        _this.chainedHandlers = [(0, _default2['default'])()];
+        _this.chainedHandlers = [];
 
 
         if ((typeof namespace === 'undefined' ? 'undefined' : _typeof(namespace)) === 'object') {
@@ -2426,7 +2422,6 @@ var Logger = function (_EventEmitter) {
                 var stackframes = _stacktrace2['default'].get();
                 context.stackframes = stackframes;
                 this.emit('log', _extends({}, context), messages);
-                this.emit(level.name, _extends({}, context), messages);
             } catch (e) {
                 // Ignore
             }
@@ -2435,13 +2430,19 @@ var Logger = function (_EventEmitter) {
         } else {
             try {
                 this.emit('log', _extends({}, context), messages);
-                this.emit(level.name, _extends({}, context), messages);
             } catch (e) {
                 // Ignore
             }
 
             next();
         }
+    };
+
+    Logger.prototype.use = function use(handler) {
+        if (typeof handler === 'function') {
+            this.chainedHandlers.push(handler);
+        }
+        return this;
     };
 
     Logger.prototype.enableStackTrace = function enableStackTrace() {
@@ -2559,78 +2560,6 @@ var INFO = exports.INFO = new _LogLevel2['default']('info', 2);
 var WARN = exports.WARN = new _LogLevel2['default']('warn', 3);
 var ERROR = exports.ERROR = new _LogLevel2['default']('error', 4);
 var OFF = exports.OFF = new _LogLevel2['default']('off', 9999);
-
-/***/ }),
-
-/***/ "../node_modules/universal-logger/lib/handlers/default.js":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-/* eslint no-console: 0 */
-var defaultFormatter = function defaultFormatter(context, messages) {
-    var _context = _extends({}, context),
-        level = _context.level,
-        namespace = _context.namespace;
-
-    var formatters = [];
-
-    if (level && level.name) {
-        formatters.push(level.name.toUpperCase());
-    }
-
-    if (namespace) {
-        formatters.push(namespace);
-    }
-
-    messages = [formatters.join(' ')].concat(messages);
-
-    return messages;
-};
-
-var consoleMethod = {
-    trace: console.log,
-    debug: console.debug || console.log,
-    info: console.info || console.log,
-    warn: console.warn || console.log,
-    error: console.error || console.log
-};
-
-var noop = function noop() {};
-
-module.exports = function (options) {
-    var _options = _extends({}, options),
-        _options$showSource = _options.showSource,
-        showSource = _options$showSource === undefined ? true : _options$showSource,
-        _options$formatter = _options.formatter,
-        formatter = _options$formatter === undefined ? defaultFormatter : _options$formatter;
-
-    if (typeof formatter !== 'function') {
-        formatter = function formatter(context, messages) {
-            return messages;
-        };
-    }
-
-    return function (context, messages, next) {
-        if (typeof next !== 'function') {
-            next = noop;
-        }
-        messages = formatter(context, messages);
-
-        if (showSource && context.stackframes.length > 0) {
-            var stackframeIndex = Math.min(4, context.stackframes.length - 1);
-            var source = context.stackframes[stackframeIndex].source || '';
-            messages = messages.concat(source);
-        }
-
-        var log = consoleMethod[context.level.name] || console.log;
-        Function.prototype.apply.call(log, console, messages);
-        next();
-    };
-};
 
 /***/ }),
 
@@ -3148,4 +3077,4 @@ log.error(_nodeEmoji2['default'].get('lightning_cloud'));
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?0d9cd3b4db9cc93d2d42
+//# sourceMappingURL=bundle.js.map?85f2a110f81030c396d9
