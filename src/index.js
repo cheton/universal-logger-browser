@@ -1,5 +1,2 @@
-import styleable from './styleable';
-
-module.exports = {
-    styleable
-};
+export minimal from './minimal';
+export styleable from './styleable';

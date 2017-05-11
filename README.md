@@ -16,11 +16,15 @@ npm install --save universal-logger universal-logger-browser
 ```js
 import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
-import { styleable } from 'universal-logger-browser';
+import { minimal, styleable } from 'universal-logger-browser';
 
 const log = logger();
 
 log.chainedHandlers = [
+    minimal({
+        showSource: true,
+        useNativeConsoleMethods: true
+    }),
     styleable({
         showSource: true,
         showTimestamp: true,
@@ -39,7 +43,7 @@ log.chainedHandlers = [
 ];
 
 // In addition to replacing the chainedHandlers array, you can register a listener for the 'log' event.
-log.on('log', styleable());
+log.on('log', minimal());
 
 log.setLevel(TRACE);
 log.enableStackTrace();
@@ -54,12 +58,20 @@ log.error(emoji.get('lightning_cloud'));
 
 ## API
 
+### Minimal
+
+Name | Type | Default | Description 
+:--- | :--- | :------ | :----------
+formatter | function(context, messages) | | Custom log formatter.
+showSource | boolean | true | Show the source line number of the caller.<br>Note that you need to call `log.enableStackTrace()` to capture stack frames.
+useNativeConsoleMethods | boolean | true | Whether to use native console methods for trace, debug, info, warn, and error.
+
 ### Styleable
 
 Name | Type | Default | Description 
 :--- | :--- | :------ | :----------
 colorized | boolean | true | Show colorized output.
-showSource | boolean | true | Show the source line number of the caller.<br>Note that you need to call `log.enableStackTrace()` to get stack frames.
+showSource | boolean | true | Show the source line number of the caller.<br>Note that you need to call `log.enableStackTrace()` to capture stack frames.
 showTimestamp | boolean | false | Show timestamp.
 formatTimestamp | function(timestamp) | | Convert timestamp to string.
 style | object | See [styleable-style.js](https://github.com/cheton/universal-logger-browser/blob/master/src/styleable-style.js) | Custom styles.

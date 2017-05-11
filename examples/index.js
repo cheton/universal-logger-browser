@@ -1,10 +1,14 @@
 import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
-import { styleable } from '../src';
+import { minimal, styleable } from '../src';
 
 const log = logger();
 
 log.chainedHandlers = [
+    minimal({
+        showSource: true,
+        useNativeConsoleMethods: true
+    }),
     styleable({
         showTimestamp: true,
         style: {
