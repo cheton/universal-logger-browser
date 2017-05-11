@@ -3117,7 +3117,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 var log = (0, _universalLogger2['default'])().use((0, _src.minimal)({
     showSource: true,
-    useNativeConsoleMethods: false
+    useNativeConsoleMethods: true
 })).use((0, _src.styleable)({
     showTimestamp: true,
     style: {
@@ -3148,4 +3148,4 @@ log.error(_nodeEmoji2['default'].get('lightning_cloud'));
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?ec960a6236c1f10120ca
+//# sourceMappingURL=bundle.js.map?0d9cd3b4db9cc93d2d42
