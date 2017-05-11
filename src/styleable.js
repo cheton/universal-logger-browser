@@ -1,6 +1,6 @@
 /* eslint no-console: 0 */
 import css from './object-to-css';
-import defaultStyle from './default-style';
+import styleableStyle from './styleable-style';
 
 const noop = () => {};
 
@@ -16,10 +16,10 @@ const styleable = (options) => {
     options.style = options.style || {};
     options.style.level = options.style.level || {};
     const style = {
-        ...defaultStyle,
+        ...styleableStyle,
         ...options.style,
         level: {
-            ...defaultStyle.level,
+            ...styleableStyle.level,
             ...options.style.level
         }
     };
@@ -27,6 +27,10 @@ const styleable = (options) => {
     return (context, messages, next) => {
         if (typeof next !== 'function') {
             next = noop;
+        }
+        if (typeof console === 'undefined') {
+            next();
+            return;
         }
 
         const { namespace, level, stackframes = [] } = { ...context };
@@ -87,7 +91,9 @@ const styleable = (options) => {
             messages = messages.concat(source);
         }
 
-        Function.prototype.apply.call(console.log, console, messages);
+        const log = console.log || noop;
+        Function.prototype.apply.call(log, console, messages);
+
         next();
     };
 };

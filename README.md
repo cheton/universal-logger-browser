@@ -62,7 +62,7 @@ colorized | boolean | true | Show colorized output.
 showSource | boolean | true | Show the source line number of the caller.<br>Note that you need to call `log.enableStackTrace()` to get stack frames.
 showTimestamp | boolean | false | Show timestamp.
 formatTimestamp | function(timestamp) | | Convert timestamp to string.
-style | object | See [default-style.js](https://github.com/cheton/universal-logger-browser/blob/master/src/default-style.js) | Custom styles.
+style | object | See [styleable-style.js](https://github.com/cheton/universal-logger-browser/blob/master/src/styleable-style.js) | Custom styles.
 
 ## License
 
