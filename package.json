@@ -1,6 +1,6 @@
 {
   "name": "universal-logger-browser",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Browser plugins for universal logger.",
   "main": "lib/index.js",
   "scripts": {
@@ -36,7 +36,7 @@
     "browser"
   ],
   "peerDependencies": {
-    "universal-logger": ">= 0.2.0"
+    "universal-logger": ">= 0.3.0"
   },
   "dependencies": {
   },
@@ -59,7 +59,7 @@
     "html-webpack-plugin": "~2.28.0",
     "node-emoji": "~1.5.1",
     "tap": "~10.3.2",
-    "universal-logger": "~0.2.0",
+    "universal-logger": "~0.3.0",
     "webpack": "~2.5.1",
     "webpack-dev-server": "~2.4.5"
   },

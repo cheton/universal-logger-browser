@@ -86,7 +86,7 @@ const styleable = (options) => {
         ];
 
         if (showSource && stackframes.length > 0) {
-            const stackframeIndex = Math.min(2, stackframes.length - 1);
+            const stackframeIndex = Math.min(4, stackframes.length - 1);
             const source = stackframes[stackframeIndex].source || '';
             messages = messages.concat(source);
         }
