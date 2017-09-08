@@ -2,7 +2,8 @@ import emoji from 'node-emoji';
 import logger, { TRACE, INFO } from 'universal-logger';
 import { minimal, styleable } from '../src';
 
-const log = logger()
+const namespace = emoji.get('rainbow');
+const log = logger(namespace)
     .use(minimal({
         showSource: true,
         useNativeConsoleMethods: true

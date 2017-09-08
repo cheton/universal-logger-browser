@@ -71,11 +71,11 @@ const styleable = (options) => {
 
         if (namespace) {
             if (colorized) {
-                formatters.push(`%c${name}%c`);
+                formatters.push(`%c${namespace}%c`);
                 styles.push(style.name);
                 styles.push('');
             } else {
-                formatters.push(name);
+                formatters.push(namespace);
             }
         }
 
