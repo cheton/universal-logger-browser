@@ -2999,11 +2999,11 @@ var styleable = function styleable(options) {
 
         if (namespace) {
             if (colorized) {
-                formatters.push('%c' + name + '%c');
+                formatters.push('%c' + namespace + '%c');
                 styles.push(style.name);
                 styles.push('');
             } else {
-                formatters.push(name);
+                formatters.push(namespace);
             }
         }
 
@@ -3044,7 +3044,8 @@ var _src = __webpack_require__("../src/index.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var log = (0, _universalLogger2['default'])().use((0, _src.minimal)({
+var namespace = _nodeEmoji2['default'].get('rainbow');
+var log = (0, _universalLogger2['default'])(namespace).use((0, _src.minimal)({
     showSource: true,
     useNativeConsoleMethods: true
 })).use((0, _src.styleable)({
@@ -3077,4 +3078,4 @@ log.error(_nodeEmoji2['default'].get('lightning_cloud'));
 /***/ })
 
 /******/ });
-//# sourceMappingURL=bundle.js.map?85f2a110f81030c396d9
+//# sourceMappingURL=bundle.js.map?38038aea88549bade224
